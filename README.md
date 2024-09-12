@@ -34,7 +34,7 @@ All Xdelta patches have their name matched to the file they patch. See the list 
 
 #### Example: ***BUILD.DAT*** is patched by ***build-dat.xdelta***
 
-### Required Game Files
+### Main Game Files
 - **MD5:** *E1EA991DDF75BAF4B218B39921A5F50C* **|** DATA\BUILD\TXR\\**BUILD.DAT**
 
 - **MD5:** *7AFBDB24E11A34BDC61A14F7BC1C365D* **|** DATA\BUILD\TXR\\**BUILD.TOC**
