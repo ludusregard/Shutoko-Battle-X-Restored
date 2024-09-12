@@ -28,6 +28,8 @@ Patch your iso (make a backup of the original too) and it should just work in Xe
 ## Method 2: xex with loose game files
 Requires your dump of the game to be unmodified, MD5 hashes provided of the unmodified files extracted from SBX.
 
+For more info on game dumping for Xbox 360: https://github.com/xenia-project/xenia/wiki/Quickstart#how-to-rip-games
+
 Grab the latest xex Xdelta patches: https://github.com/ludusregard/Shutoko-Battle-X-Restored/releases/tag/xex
 
 All Xdelta patches have their name matched to the file they patch. See the list below for file names and paths + MD5 hash.
