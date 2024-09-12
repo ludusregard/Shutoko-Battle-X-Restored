@@ -19,7 +19,7 @@ Grab any Xdelta patcher of choice, I recommend the latest version of Delta Patch
 ## Method 1: iso
 **Requires an unmodified iso of *Shutokō Battle X* (*首都高バトルＸ*) NOT *Import Tuner Challenge*.**
 
-**MD5:** *7fc78018c68a2f73e703e1679ac4051e* **|** http://redump.org/disc/86493/
+**MD5:** *7FC78018C68A2f73E703E1679AC4051E* **|** http://redump.org/disc/86493/
 
 Grab the latest iso Xdelta patch: https://github.com/ludusregard/Shutoko-Battle-X-Restored/releases/tag/iso
 
@@ -35,22 +35,22 @@ All Xdelta patches have their name matched to the file they patch. See the list 
 #### Example: ***BUILD.DAT*** is patched by ***build-dat.xdelta***
 
 ### Required Game Files
-- **MD5:** *7fc78018c68a2f73e703e1679ac4051e* **|** DATA\BUILD\TXR\\**BUILD.DAT**
+- **MD5:** *E1EA991DDF75BAF4B218B39921A5F50C* **|** DATA\BUILD\TXR\\**BUILD.DAT**
 
-- **MD5:** *7fc78018c68a2f73e703e1679ac4051e* **|** DATA\BUILD\TXR\\**BUILD.TOC**
+- **MD5:** *7AFBDB24E11A34BDC61A14F7BC1C365D* **|** DATA\BUILD\TXR\\**BUILD.TOC**
 
 ### Optional Video Files
-- **MD5:** *7fc78018c68a2f73e703e1679ac4051e* **|** DATA\TXR\MOVIE\\**OPENING.wmv**
+- **MD5:** *BE4C013AC9B61895E7F351C845B26FB7* **|** DATA\TXR\MOVIE\\**OPENING.wmv**
 
-- **MD5:** *7fc78018c68a2f73e703e1679ac4051e* **|** DATA\TXR\MOVIE\\**ENDING.wmv**
+- **MD5:** *F73940D1D5F0E4BB9E06F613D6A6EC4C* **|** DATA\TXR\MOVIE\\**ENDING.wmv**
 
-- **MD5:** *7fc78018c68a2f73e703e1679ac4051e* **|** DATA\TXR\MOVIE\\**PERFECT_ENDING.wmv**
+- **MD5:** *2F1A5539FCB9238B7375E5BD6D982460* **|** DATA\TXR\MOVIE\\**PERFECT_ENDING.wmv**
 
-- **MD5:** *7fc78018c68a2f73e703e1679ac4051e* **|** DATA\TXR\MOVIE\\**STAGE1_OPENING.wmv**
+- **MD5:** *AB3AB9D78AD99D67854A9179226180CD* **|** DATA\TXR\MOVIE\\**STAGE1_OPENING.wmv**
 
-- **MD5:** *7fc78018c68a2f73e703e1679ac4051e* **|** DATA\TXR\MOVIE\\**STAGE2_OPENING.wmv**
+- **MD5:** *17260E9DD9CEBAEB7AF8EF98FD7B7399* **|** DATA\TXR\MOVIE\\**STAGE2_OPENING.wmv**
 
-- **MD5:** *7fc78018c68a2f73e703e1679ac4051e* **|** DATA\TXR\MOVIE\\**STAGE3_OPENING.wmv**
+- **MD5:** *F83E4901D58648247F95E56C646D249B* **|** DATA\TXR\MOVIE\\**STAGE3_OPENING.wmv**
 
 ### Notes
 - The "optional" video file patches can be substituted by replacing the .wmv files with their ***Import Tuner Challenge*** equivalents
