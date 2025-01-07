@@ -1,0 +1,13 @@
+title_name = "Import Tuner Challange"
+title_id = "555307EE"
+hash = "AAD3CAA44B5F7D92" # default.xex
+#media_id = ""
+
+[[patch]]
+    name = "Change required loading check cycles from 0x3C to 0x1A"
+    author = "Gliniak"
+    is_enabled = true
+
+    [[patch.be32]]
+        address = 0x8218E4EC
+        value = 0x2B0B000F

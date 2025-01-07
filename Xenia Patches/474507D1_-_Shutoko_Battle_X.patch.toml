@@ -1,0 +1,23 @@
+title_name = "Shutoko Battle X"
+title_id = "474507D1" # GE-2001
+hash = "6F28AFEC824C4213" # default.xex
+#media_id = ""
+
+[[patch]]
+    name = "Change required loading check cycles from 0x3C to 0x10"
+    author = "Gliniak, update from Ludus"
+    is_enabled = true
+
+    [[patch.be32]]
+        address = 0x8218c30c
+        value = 0x2B0B0010 
+
+[[patch]]
+    name = "FOV Change"
+    desc = "NOPs FOV opcode for new FOV value."
+    author = "Ludus"
+    is_enabled = false
+
+    [[patch.be32]]
+        address = 0x820aae88
+        value = 0x60000000
