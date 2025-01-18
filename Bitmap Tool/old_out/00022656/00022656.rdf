@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<RDF Version="XPR2">
+
+<Texture
+   Name   = "TSPFONT"
+   Source = "TSPFONT.tga"
+   Format = "D3DFMT_A8R8G8B8"
+   Width  = "576"
+   Height = "928"
+   Levels = "1"
+/>
+
+</RDF>
