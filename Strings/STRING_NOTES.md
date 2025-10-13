@@ -24,11 +24,11 @@ you might want to refer to the guide below for writing "special" text.
 ```
 $\ Colored text starter 1 (tends to be used for character names)
 *\ Colored text starter 2 (tends to be used for emphasis)
-\* Colored text terminator (same terminator for both colors)
++\ Colored text starter 3 (tends to be used for team names)
+\* Colored text terminator (same terminator for all colors)
 newline\> Next page for conversations (any of the P.A. conversations that are more than one sentence should have these)
 \\ Required terminator for ticker reels (the horizontally scrolling text in the garage menu)
 \.\ Terminator for character bios
-?\ Unknown terminator
 #\ Float values (i.e. time attack time or car stats)
 ```
 

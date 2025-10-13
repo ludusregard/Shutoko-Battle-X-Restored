@@ -52,6 +52,9 @@ def transform_string(string_data):
         elif string_data[i:i+2] == b"\xff\xfe": # Character name marker start
             result.append("$\\".encode('utf-16-be'))
             i += 2
+        elif string_data[i:i+2] == b"\xff\xff": # Team name marker start
+            result.append("+\\".encode('utf-16-be'))
+            i += 2
         elif string_data[i:i+2] == b"\xff\xd6": # Color text marker start
             result.append("\\*".encode('utf-16-be'))
             i += 2
@@ -64,16 +67,20 @@ def transform_string(string_data):
         elif string_data[i:i+2] == b"\x00\x30": # The number 0 (needed so below doesnt fuck it up on transform)
             result.append("0".encode('utf-16-be'))
             i += 2
-        elif string_data[i:i+4] == b"\x30\x00\x00\x00": #  Unknown terminator (accidental?)
-            result.append("?\\".encode('utf-16-be'))
-            i += 4
         elif string_data[i:i+4] == b"\x30\x00\x30\x00": #  Float values (i.e. player/car stats)
             result.append("#\\".encode('utf-16-be'))
             i += 4
         else:
             result.append(bytes([string_data[i]]))
             i += 1
-    return b"".join(result).rstrip(b"\x00")
+    transformed = b"".join(result)
+    
+    if transformed[-3:] == b"\x00\x00\x00":
+        transformed = transformed[:-3]
+    if len(transformed) % 2 == 0 and transformed[-2:] == b"\x00\x00":
+        transformed = transformed[:-2]     
+        
+    return transformed
 
 def inverse_transform_string(transformed_data):
     # Inverse transform specific sequences back to hex.
@@ -89,6 +96,9 @@ def inverse_transform_string(transformed_data):
         elif transformed_data[i:i+4] == b"\x00\x24\x00\x5C":  # Transform "$\" to "FF FE"
             result.append(b"\xff\xfe")
             i += 4
+        elif transformed_data[i:i+4] == b"\x00\x2B\x00\x5C":  # Transform "+\" to "FF FF"
+            result.append(b"\xff\xff")
+            i += 4
         elif transformed_data[i:i+4] == b"\x00\x5C\x00\x2A":  # Transform "\*" to "FF D6"
             result.append(b"\xff\xd6")
             i += 4
@@ -98,9 +108,6 @@ def inverse_transform_string(transformed_data):
         elif transformed_data[i:i+6] == b"\x00\x5C\x00\x2E\x00\x5C":  # Transform "\.\" to "00 2E"
             result.append(b"\x00\x2e")
             i += 6
-        elif transformed_data[i:i+4] == b"\x00\x3F\x00\x5C":  # Transform "?\" to "30 00"
-            result.append(b"\x30\x00")
-            i += 4
         elif transformed_data[i:i+4] == b"\x00\x23\x00\x5C":  # Transform "#\" to "30 00 30 00"
             result.append(b"\x30\x00\x30\00")
             i += 4
@@ -168,36 +175,58 @@ def dump_bin_file(input_bin):
     num_strings = struct.unpack("<I", data[:4])[0]
     print(f"Number of strings: {num_strings}")
 
+    pointer_table_start = 4
+    pointer_table_end = pointer_table_start + (num_strings * 4)
+    
     pointers = [
-        struct.unpack("<I", data[i:i+4])[0]
-        for i in range(4, 4 + num_strings * 4, 4)
+        struct.unpack_from("<I", data, pointer_table_start + i * 4)[0]
+        for i in range(num_strings)
     ]
 
     output_file = os.path.splitext(input_bin)[0] + ".txt"
-    
-    with open(output_file, "wb") as f:
-        f.write(b"\xFE\xFF") # Header for UTF-16 BE BOM text.
-        for i, pointer in enumerate(pointers):
-            start = pointer
-            end = pointers[i + 1] if i + 1 < len(pointers) else len(data)
+
+    # Write extracted strings
+    with open(output_file, "wb") as f_out:
+        # UTF-16 BE BOM
+        f_out.write(b"\xFE\xFF")
+
+        for i, start in enumerate(pointers):
+            end = pointers[i + 1] if i + 1 < num_strings else len(data)
             string_data = data[start:end]
-            transformed_string = transform_string(string_data)
-            string_id = f"\n\n### String {i + 1} ###\n\n" if i > 0 else f"### String 1 ###\n\n"
-            f.write(string_id.encode("utf-16-be") + transformed_string) # We write the strings directly to binary because some string data is NOT UTF-16-BE and isn"t handled by transform_string
 
-    print(f"Dumped all strings to {output_file}")
+            transformed = transform_string(string_data)
 
+            section_header = (
+                f"\n\n### String {i + 1} ###\n\n" if i > 0 else "### String 1 ###\n\n"
+            )
+            f_out.write(section_header.encode("utf-16-be"))
+            f_out.write(transformed)
+
+    print(f"Dumped {num_strings} strings to '{output_file}'.")
+    
 def dump_all_bin_files():
-    for file in os.listdir("."):
+    folder = input("Enter the folder to dump .bin files from: ").strip()
+    if not os.path.isdir(folder):
+        print(f"Folder '{folder}' does not exist.")
+        return
+
+    for file in os.listdir(folder):
         if file.endswith(".bin"):
-            print(f"Dumping {file}...")
-            dump_bin_file(file)
+            file_path = os.path.join(folder, file)
+            print(f"Dumping {file_path}...")
+            dump_bin_file(file_path)
 
 def build_all_txt_files():
-    for file in os.listdir("."):
+    folder = input("Enter the folder to build .txt files from: ").strip()
+    if not os.path.isdir(folder):
+        print(f"Folder '{folder}' does not exist.")
+        return
+
+    for file in os.listdir(folder):
         if file.endswith(".txt"):
-            print(f"Building {file}...")
-            build_bin_file(file)
+            file_path = os.path.join(folder, file)
+            print(f"Building {file_path}...")
+            build_bin_file(file_path)
 
 if __name__ == "__main__":
     prompter = input("Enter [1] to dump strings, [2] to build strings, or [3] to process all: \n")
