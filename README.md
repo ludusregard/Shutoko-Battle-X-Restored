@@ -20,6 +20,8 @@ For more info on game dumping for Xbox 360: https://github.com/xenia-project/xen
 6. Done! Test the game with Xenia and **make sure the .toml patch is enabled**
 7. **(OPTIONAL)** replace the .wmv files within ***DATA\TXR\MOVIE*** with the equivalent named ones from Import Tuner Challenge
 
+[![Video Tutorial](https://i3.ytimg.com/vi/ZuRdDE0fnOw/maxresdefault.jpg)](https://www.youtube.com/watch?v=ZuRdDE0fnOw)
+
 ### Main Game Files MD5 Hashes
 - **MD5:** *E1EA991DDF75BAF4B218B39921A5F50C* **|** DATA\BUILD\TXR\\**BUILD.DAT**
 
