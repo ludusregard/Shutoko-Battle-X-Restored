@@ -7,36 +7,20 @@ Currently the SBXR is a modified version of the ITC release but with numerous fi
 i.e. correcting dialog errors like "Nissan 80 Supra" to "Toyota 80 Supra"
 
 # Installation
-Reminder, use the .toml patch for Xenia for the game to prevent the load hang after the first race regardless of installation method.
+Reminder, use the .toml patch for Xenia for the game to prevent the load hang after the first race.
 If you want to run this on an Xbox 360, it should work without issue as long as you are familiar with console modding.
-Method 1 is for if you have an iso and want to mod that copy. Method 2 is for if you have loose files + xex.
-The two methods are separated in the tag releases by "iso" and "xex" accordingly.
-
-Both methods of installation are Xdelta patches to not infringe on copyright by distributing assets illegally.
-
-Grab any Xdelta patcher of choice, I recommend the latest version of Delta Patcher: https://github.com/marco-calautti/DeltaPatcher
-
-## Method 1: iso
-**Requires an unmodified iso of *Shutokō Battle X* (*首都高バトルＸ*) NOT *Import Tuner Challenge*.**
-
-**MD5:** *7FC78018C68A2f73E703E1679AC4051E* **|** http://redump.org/disc/86493/
-
-Grab the latest iso Xdelta patch: https://github.com/ludusregard/Shutoko-Battle-X-Restored/releases/tag/iso
-
-Patch your iso (make a backup of the original too) and it should just work in Xenia. The iso size will shrink nearly in half.
-
-## Method 2: xex with loose game files
-Requires your dump of the game to be unmodified, MD5 hashes provided of the unmodified files extracted from SBX.
+Prior to installation you will want to have the game dumped and in a directory you can find.
 
 For more info on game dumping for Xbox 360: https://github.com/xenia-project/xenia/wiki/Quickstart#how-to-rip-games
 
-Grab the latest xex Xdelta patches: https://github.com/ludusregard/Shutoko-Battle-X-Restored/releases/tag/xex
+1. Dump your copy of Shutokō Battle X
+2. Grab the latest SBXR version from https://github.com/ludusregard/Shutoko-Battle-X-Restored/releases
+3. Run the installer and locate the directory of **BUILD.TOC** and **BUILD.DAT**, then click Install
+5. Decide whether or not to make backups of **BUILD.TOC** and **BUILD.DAT**
+6. Done! Test the game with Xenia and **make sure the .toml patch is enabled**
+7. **(OPTIONAL)** replace the .wmv files within ***DATA\TXR\MOVIE*** with the equivalent named ones from Import Tuner Challenge
 
-All Xdelta patches have their name matched to the file they patch. See the list below for file names and paths + MD5 hash.
-
-#### Example: ***BUILD.DAT*** is patched by ***build-dat.xdelta***
-
-### Main Game Files
+### Main Game Files MD5 Hashes
 - **MD5:** *E1EA991DDF75BAF4B218B39921A5F50C* **|** DATA\BUILD\TXR\\**BUILD.DAT**
 
 - **MD5:** *7AFBDB24E11A34BDC61A14F7BC1C365D* **|** DATA\BUILD\TXR\\**BUILD.TOC**
@@ -55,8 +39,6 @@ All Xdelta patches have their name matched to the file they patch. See the list 
 - **MD5:** *F83E4901D58648247F95E56C646D249B* **|** DATA\TXR\MOVIE\\**STAGE3_OPENING.wmv**
 
 ### Notes
-- The "optional" video file patches can be substituted by replacing the .wmv files with their ***Import Tuner Challenge*** equivalents
-
 - If you want the ***Import Tuner Challenge*** map changes, replacing the files **BUILD_CRS.DAT** and **BUILD_CRS.TOC** with their ITC equivalents should work
 
 - Many of the files aren't actually used in the game as they have duplicates baked into **BUILD.DAT** so deleting many of the loose files can save space
